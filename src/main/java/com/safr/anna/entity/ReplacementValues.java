@@ -8,7 +8,6 @@ public class ReplacementValues {
     private final int dest;
     final int BOUND = 50;
 
-
     public ReplacementValues(){
         Random random = new Random();
         this.src = random.nextInt(BOUND);

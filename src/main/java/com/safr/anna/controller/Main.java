@@ -6,9 +6,7 @@ import com.safr.anna.service.*;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.Arrays;
-
 
 public class Main {
     static final Logger LOG = LogManager.getLogger();
