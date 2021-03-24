@@ -17,7 +17,6 @@ public class ReplacementValues {
     public int getDest() {
         return dest;
     }
-
     public int getSrc() {
         return src;
     }
