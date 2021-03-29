@@ -36,7 +36,7 @@ public class TestReadService {
         Assert.assertEquals(actual, expected);
     }
     @Test
-    public void testReadFirstNotValidString() throws FileNotFoundException {
+    public void testMixFile() throws FileNotFoundException {
         CustomArray actual = new CustomArray(new int[]{12, 42, -2, 24, -11, 0, 48, 6});
         CustomArray expected = readService.readFromFile("src/test/input/mix.txt");
         Assert.assertEquals(actual, expected);
