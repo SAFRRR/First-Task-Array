@@ -26,7 +26,6 @@ public class TestArrayReader {
     public void testCorrectFile() throws FileNotFoundException {
         CustomArray actual = new CustomArray(new int[]{12, 42, -2, 24, -11, 0, 48, 6});
         CustomArray expected = arrayReader.readFromFile("src/main/resources/input/correct.txt");
-
         Assert.assertEquals(actual, expected);
     }
 
