@@ -8,11 +8,12 @@ import org.apache.logging.log4j.Logger;
 
 public class SearchServiceImpl implements SearchService {
     private final static Logger logger = LogManager.getLogger();
+
     public int findMinValue(CustomArray array) throws ArrayException {
-        int min = array.get(0);
+        int min = array.getElement(0);
         for (int i = 1; i < array.size(); i++){
-            if(array.get(i) < min){
-                min = array.get(i);
+            if (array.getElement(i) < min){
+                min = array.getElement(i);
             }
         }
         logger.info("Min element - " + min);
@@ -20,10 +21,10 @@ public class SearchServiceImpl implements SearchService {
     }
 
     public int findMaxValue(CustomArray array) throws ArrayException {
-        int max = array.get(0);
+        int max = array.getElement(0);
         for (int i = 1; i < array.size(); i++){
-            if(array.get(i) > max){
-                max = array.get(i);
+            if (array.getElement(i) > max){
+                max = array.getElement(i);
             }
         }
         logger.info("Max element - " + max);
@@ -33,7 +34,7 @@ public class SearchServiceImpl implements SearchService {
     public int findSum(CustomArray array)throws ArrayException{
         int sum = 0;
         for (int i = 0; i < array.size(); i++) {
-            sum += array.get(i);
+            sum += array.getElement(i);
         }
         logger.info("Sum of the elements - " + sum);
         return sum;
@@ -48,7 +49,7 @@ public class SearchServiceImpl implements SearchService {
     public int findNegativeNumbersAmount(CustomArray array)throws ArrayException{
         int count = 0;
         for (int i = 0; i < array.size(); i++) {
-            if (array.get(i) < 0) {
+            if (array.getElement(i) < 0) {
                 count++;
             }
         }
@@ -59,7 +60,7 @@ public class SearchServiceImpl implements SearchService {
     public int findPositiveNumbersAmount(CustomArray array)throws ArrayException{
         int count = 0;
         for (int i = 0; i < array.size(); i++) {
-            if (array.get(i) > 0) {
+            if (array.getElement(i) > 0) {
                 count++;
             }
         }
@@ -68,12 +69,11 @@ public class SearchServiceImpl implements SearchService {
     }
     public void  replaceValues(CustomArray array, int src, int dest) throws ArrayException{
         for (int i = 0; i < array.size(); i++){
-            if(array.get(i) == src){
-                array.set(i, dest);
+            if (array.getElement(i) == src){
+                array.setElement(i, dest);
             }
         }
         logger.info("New array is : " + array);
     }
-
 }
 

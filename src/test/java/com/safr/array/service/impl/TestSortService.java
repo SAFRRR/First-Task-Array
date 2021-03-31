@@ -13,7 +13,6 @@ public class TestSortService {
     CustomArray expectedArray;
     SortService sortService;
 
-
     @BeforeClass
     public void setUp(){
         sortService = new SortServiceImpl();
@@ -26,11 +25,13 @@ public class TestSortService {
         sortService.shakerSort(customArray);
         Assert.assertEquals(customArray, expectedArray);
     }
+
     @Test
     public void checkMergeSort() throws ArrayException {
         sortService.mergeSort(customArray);
         Assert.assertEquals(customArray, expectedArray);
     }
+
     @Test
     public void checkQuickSort() throws ArrayException {
         sortService.quickSort(customArray);

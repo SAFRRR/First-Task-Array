@@ -1,0 +1,3 @@
+01:36:29.285 [CustomArray] INFO  CustomArray - Array created successfully
+01:36:29.289 [CustomArray] INFO  CustomArray - Array created successfully
+01:36:29.296 [SortServiceImpl] INFO  SortServiceImpl - Shaker sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]

@@ -13,6 +13,7 @@ public class CustomArray {
     public CustomArray(){}
 
     public CustomArray(int [] array){
+        logger.info("Array created successfully");
         this.array = array;
     }
 
@@ -24,7 +25,7 @@ public class CustomArray {
         this.array = new int[size];
     }
 
-    public int get(int index) throws ArrayException {
+    public int getElement(int index) throws ArrayException {
         if (index < 0 || index >= array.length){
             logger.error("Index out of bounds");
             throw new ArrayException("Index out of bounds");
@@ -32,7 +33,11 @@ public class CustomArray {
         return array[index];
     }
 
-    public void set(int index, int value) throws ArrayException {
+    public int[] getArray() {
+        return array.clone();
+    }
+
+    public void setElement(int index, int value) throws ArrayException {
         if (index < 0 || index >= array.length){
             logger.error("Index out of bounds");
             throw new ArrayException("Index out of bounds");

@@ -8,31 +8,31 @@ import org.apache.logging.log4j.Logger;
 
 
 public class SortServiceImpl implements SortService {
-
     private final static Logger logger = LogManager.getLogger();
+
     public void shakerSort(CustomArray customArray) throws ArrayException {
         int left = 0;
         int temp = 0;
         int right = customArray.size() - 1;
         while (left <= right) {
             for (int i = right; i > left; --i) {
-                if (customArray.get(i - 1) > customArray.get(i)) {
-                    temp = customArray.get(i);
-                    customArray.set(i, customArray.get(i - 1));
-                    customArray.set(i - 1, temp);
+                if (customArray.getElement(i - 1) > customArray.getElement(i)) {
+                    temp = customArray.getElement(i);
+                    customArray.setElement(i, customArray.getElement(i - 1));
+                    customArray.setElement(i - 1, temp);
                 }
             }
             ++left;
             for (int i = left; i < right; ++i) {
-                if (customArray.get(i) > customArray.get(i + 1)) {
-                    temp = customArray.get(i);
-                    customArray.set(i, customArray.get(i + 1));
-                    customArray.set(i + 1, temp);
+                if (customArray.getElement(i) > customArray.getElement(i + 1)) {
+                    temp = customArray.getElement(i);
+                    customArray.setElement(i, customArray.getElement(i + 1));
+                    customArray.setElement(i + 1, temp);
                 }
             }
             --right;
         }
-        logger.info("Sorted array : " + customArray);
+        logger.info("Shaker sort: sorted array : " + customArray);
     }
 
     public  void merge(CustomArray array, CustomArray buffer, int left, int right) throws ArrayException {
@@ -40,43 +40,44 @@ public class SortServiceImpl implements SortService {
             int middle = (left + right) / 2;
             merge(array, buffer, left, middle);
             merge(array, buffer, middle + 1, right);
-
             int k = left;
             for (int i = left, j = middle + 1; i <= middle || j <= right; ) {
-                if (j > right || (i <= middle && array.get(i) < array.get(j))) {
-                    buffer.set(k, array.get(i));
+                if (j > right || (i <= middle && array.getElement(i) < array.getElement(j))) {
+                    buffer.setElement(k, array.getElement(i));
                     ++i;
                 } else {
-                    buffer.set(k, array.get(j));
+                    buffer.setElement(k, array.getElement(j));
                     ++j;
                 }
                 ++k;
             }
             for (int i = left; i <= right; ++i) {
-                array.set(i, buffer.get(i));
+                array.setElement(i, buffer.getElement(i));
             }
         }
     }
+
     public void mergeSort(CustomArray customArray) throws ArrayException {
         CustomArray buffer = new CustomArray(customArray.size());
         merge(customArray, buffer, 0, customArray.size()-1);
-        logger.info("Sorted array : " + customArray);
+        logger.info("Merge sort: sorted array : " + customArray);
     }
+
     int partition(CustomArray array, int left, int right) throws ArrayException {
-        int tempRight = array.get(right);
+        int tempRight = array.getElement(right);
         int tempLeft = left;
         int temp = 0;
         for (int i = left; i < right; ++i) {
-            if (array.get(i) <= tempRight) {
-                temp = array.get(i);
-                array.set(i, array.get(tempLeft));
-                array.set(tempLeft, temp);
+            if (array.getElement(i) <= tempRight) {
+                temp = array.getElement(i);
+                array.setElement(i, array.getElement(tempLeft));
+                array.setElement(tempLeft, temp);
                 ++tempLeft;
             }
         }
-        temp = array.get(tempLeft);
-        array.set(tempLeft, array.get(right));
-        array.set(right, temp);
+        temp = array.getElement(tempLeft);
+        array.setElement(tempLeft, array.getElement(right));
+        array.setElement(right, temp);
         return tempLeft;
     }
 
@@ -89,6 +90,6 @@ public class SortServiceImpl implements SortService {
     }
     public void quickSort(CustomArray customArray) throws ArrayException {
         quickSortImpl(customArray, 0, customArray.size() - 1);
-        logger.info("Sorted array : " + customArray);
+        logger.info("Quick sort: sorted array : " + customArray);
     }
 }
