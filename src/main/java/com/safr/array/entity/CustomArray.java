@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 
 public class CustomArray {
-
     private final static Logger logger = LogManager.getLogger();
     private int [] array;
 
@@ -18,7 +17,7 @@ public class CustomArray {
     }
 
     public CustomArray(int size) throws ArrayException {
-        if(size < 1){
+        if (size < 1){
             logger.error("Incorrect array size");
             throw new ArrayException("Incorrect array size");
         }
