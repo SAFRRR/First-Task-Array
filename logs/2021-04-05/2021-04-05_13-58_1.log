@@ -1,0 +1,7 @@
+13:58:13.457 [CustomArray] ERROR CustomArray - Incorrect array size
+13:58:51.097 [SortServiceImpl] INFO  SortServiceImpl - Merge sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]
+13:58:51.104 [SortServiceImpl] INFO  SortServiceImpl - Quick sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]
+13:58:51.107 [SortServiceImpl] INFO  SortServiceImpl - Shaker sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]
+13:58:51.113 [SortServiceImpl] INFO  SortServiceImpl - Merge sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]
+13:58:51.114 [SortServiceImpl] INFO  SortServiceImpl - Quick sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]
+13:58:51.116 [SortServiceImpl] INFO  SortServiceImpl - Shaker sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]

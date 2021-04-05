@@ -1,41 +1,45 @@
 package com.safr.array.reader;
 
-import com.safr.array.entity.CustomArray;
-import com.safr.array.exception.ArrayException;
-import com.safr.array.parser.ArrayParser;
+import com.safr.array.exception.ReaderException;
 import com.safr.array.validator.ArrayValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ArrayReader {
-    private final static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
-    public CustomArray readFromFile(String path) {
-        CustomArray resultArray = null;
-        String line;
-        ArrayValidator arrayValidator = new ArrayValidator();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
-            while ((line = bufferedReader.readLine()) != null) {
-                if (arrayValidator.validate(line)){
-                    ArrayParser arrayParser = new ArrayParser();
-                    resultArray = arrayParser.parse(line);
-                    logger.info("File read successfully");
-                }else{
-                    logger.error("File contains incorrect data");
-                }
-            }
-        } catch (FileNotFoundException e) {
-            logger.error("File not found");
+    public String readFromFile(String filePath) throws ReaderException {
+        if (filePath == null) {
+            logger.error("File path is null");
+            throw new ReaderException("File path is null");
+        }
+        File file = new File(filePath);
+        if (!file.isFile()) {
+            logger.error("Incorrect file path");
+            throw new ReaderException("Incorrect file path");
+        }
+        if (file.length() == 0) {
+            logger.error("File is empty");
+            throw new ReaderException("File is empty");
+        }
+        ArrayValidator validator = new ArrayValidator();
+        String resultString = null;
+        Path path = Paths.get(filePath);
+        try (var lines = Files.lines(path)) {
+            resultString = lines
+                    .filter(validator::validate)
+                    .findFirst()
+                    .orElse(null);
         } catch (IOException e) {
             logger.error("IOException  occurred while reading the file");
-        } catch (ArrayException e) {
-            logger.error("Array exception occurred while reading the file");
+            throw new ReaderException("IOException  occurred while reading the file");
         }
-        return resultArray;
+        return resultString;
     }
 }
+

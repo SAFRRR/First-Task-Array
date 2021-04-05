@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 
 public class SortServiceImpl implements SortService {
-    private final static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     public void shakerSort(CustomArray customArray) throws ArrayException {
         int left = 0;
@@ -63,7 +63,7 @@ public class SortServiceImpl implements SortService {
         logger.info("Merge sort: sorted array : " + customArray);
     }
 
-    int partition(CustomArray array, int left, int right) throws ArrayException {
+    public int partition(CustomArray array, int left, int right) throws ArrayException {
         int tempRight = array.getElement(right);
         int tempLeft = left;
         int temp = 0;
@@ -81,13 +81,14 @@ public class SortServiceImpl implements SortService {
         return tempLeft;
     }
 
-    void quickSortImpl(CustomArray array, int left, int right) throws ArrayException {
+    public void quickSortImpl(CustomArray array, int left, int right) throws ArrayException {
         if (left < right) {
             int temp = partition(array, left, right);
             quickSortImpl(array, left, temp - 1);
             quickSortImpl(array, temp + 1, right);
         }
     }
+
     public void quickSort(CustomArray customArray) throws ArrayException {
         quickSortImpl(customArray, 0, customArray.size() - 1);
         logger.info("Quick sort: sorted array : " + customArray);

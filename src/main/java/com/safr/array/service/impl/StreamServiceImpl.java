@@ -1,10 +1,9 @@
 package com.safr.array.service.impl;
 
+import com.safr.array.creator.CustomArrayCreator;
 import com.safr.array.entity.CustomArray;
 import com.safr.array.exception.ArrayException;
 import com.safr.array.service.StreamService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -45,8 +44,8 @@ public class StreamServiceImpl implements StreamService {
     }
 
     public CustomArray  replaceValuesStream(CustomArray customArray, int src, int dest) throws ArrayException{
-         return new CustomArray(
-                Arrays.stream(customArray.getArray())
+        CustomArrayCreator creator = new CustomArrayCreator();
+        return creator.createCustomArray(Arrays.stream(customArray.getArray())
                         .map(element -> element == src ? dest : element)
                         .toArray());
     }

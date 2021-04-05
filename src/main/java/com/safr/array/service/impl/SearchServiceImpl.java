@@ -7,7 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class SearchServiceImpl implements SearchService {
-    private final static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     public int findMinValue(CustomArray array) throws ArrayException {
         int min = array.getElement(0);

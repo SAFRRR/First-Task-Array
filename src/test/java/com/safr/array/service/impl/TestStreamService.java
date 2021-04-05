@@ -1,5 +1,6 @@
 package com.safr.array.service.impl;
 
+import com.safr.array.creator.CustomArrayCreator;
 import com.safr.array.entity.CustomArray;
 import com.safr.array.exception.ArrayException;
 import com.safr.array.service.StreamService;
@@ -12,9 +13,10 @@ public class TestStreamService {
     StreamService streamService;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() throws ArrayException {
+        CustomArrayCreator creator = new CustomArrayCreator();
         streamService = new StreamServiceImpl();
-        customArray = new CustomArray(new int[]{4,76,-1,7,4,-1,0,-23});
+        customArray = creator.createCustomArray(new int[]{4,76,-1,7,4,-1,0,-23});
     }
 
     @Test

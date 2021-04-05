@@ -6,16 +6,10 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 
 public class CustomArray {
-
-    private final static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     private int [] array;
 
     public CustomArray(){}
-
-    public CustomArray(int [] array){
-        logger.info("Array created successfully");
-        this.array = array;
-    }
 
     public CustomArray(int size) throws ArrayException {
         if(size < 1){

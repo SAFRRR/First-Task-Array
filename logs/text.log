@@ -1,3 +1,13 @@
-01:36:29.285 [CustomArray] INFO  CustomArray - Array created successfully
-01:36:29.289 [CustomArray] INFO  CustomArray - Array created successfully
-01:36:29.296 [SortServiceImpl] INFO  SortServiceImpl - Shaker sort: sorted array : CustomArray[-23, -12, -1, 0, 4, 7, 42, 76]
+13:59:26.099 [SearchServiceImpl] INFO  SearchServiceImpl - Sum of the elements - 66
+13:59:26.116 [SearchServiceImpl] INFO  SearchServiceImpl - Average value - 8.25
+13:59:26.120 [SearchServiceImpl] INFO  SearchServiceImpl - Max element - 76
+13:59:26.126 [SearchServiceImpl] INFO  SearchServiceImpl - Min element - -23
+13:59:26.132 [SearchServiceImpl] INFO  SearchServiceImpl - Amount of negative elements - 3
+13:59:26.137 [SearchServiceImpl] INFO  SearchServiceImpl - Amount of positive elements - 4
+13:59:26.142 [SearchServiceImpl] INFO  SearchServiceImpl - New array is : CustomArray[4, 76, 0, 7, 4, 0, 0, -23]
+13:59:26.145 [SearchServiceImpl] INFO  SearchServiceImpl - Sum of the elements - 68
+13:59:26.170 [CustomArray] ERROR CustomArray - Incorrect array size
+13:59:26.173 [CustomArray] ERROR CustomArray - Index out of bounds
+13:59:26.178 [CustomArray] ERROR CustomArray - Index out of bounds
+13:59:45.296 [Main] INFO  Main - File path: /Users/anna/Documents/GitHub/First-Task-Array/target/classes/input/correct.txt
+13:59:45.307 [Main] INFO  Main - Created array: CustomArray[12, 42, -2, 24, -11, 0, 48, 6]

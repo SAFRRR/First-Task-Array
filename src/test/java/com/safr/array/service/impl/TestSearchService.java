@@ -1,5 +1,6 @@
 package com.safr.array.service.impl;
 
+import com.safr.array.creator.CustomArrayCreator;
 import com.safr.array.entity.CustomArray;
 import com.safr.array.exception.ArrayException;
 import com.safr.array.service.SearchService;
@@ -12,9 +13,10 @@ public class TestSearchService {
     SearchService searchService;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() throws ArrayException {
+        CustomArrayCreator creator = new CustomArrayCreator();
         searchService = new SearchServiceImpl();
-        customArray = new CustomArray(new int[]{4,76,-1,7,4,-1,0,-23});
+        customArray = creator.createCustomArray(new int[]{4,76,-1,7,4,-1,0,-23});
     }
 
     @Test(expectedExceptions = ArrayException.class)
@@ -24,12 +26,12 @@ public class TestSearchService {
 
     @Test
     public void checkSize(){
-        Assert.assertEquals(customArray.size(), 4);
+        Assert.assertEquals(customArray.size(), 8);
     }
 
     @Test
     public void getElement() throws ArrayException {
-        Assert.assertEquals(customArray.getElement(0), 1);
+        Assert.assertEquals(customArray.getElement(0), 4);
     }
 
     @Test(expectedExceptions = ArrayException.class)
@@ -52,6 +54,7 @@ public class TestSearchService {
     public void checkMinValue() throws ArrayException {
         Assert.assertEquals(searchService.findMinValue(customArray), -23);
     }
+
     @Test
     public void checkMaxValue() throws ArrayException {
         Assert.assertEquals(searchService.findMaxValue(customArray), 76);
@@ -64,7 +67,8 @@ public class TestSearchService {
 
     @Test
     public void checkSum() throws ArrayException {
-        Assert.assertEquals(searchService.findSum(customArray), 66);
+        int sum = searchService.findSum(customArray);
+        Assert.assertEquals(sum, 66);
     }
 
     @Test
